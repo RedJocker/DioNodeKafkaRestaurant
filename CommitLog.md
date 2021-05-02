@@ -8,17 +8,31 @@
         - node_modules
         - .DS_Store
     - created and ran initialPackages.sh
+<br>
 
-- init express server
+- init express server (forgot to commit at this point, included in next)
     - added scripts on package.json
     - created and run addedPackages1.sh
         - express
         - node-rdkafka
     - created src/index.ts
         - wrote express server entrypoint
+<br>
 
 - create one test endpoint
     - added waiterController.ts
         - created a POST endpoint
             - just sending an 'OK' back to test
-            
+<br>
+
+- create kafka topic
+    - added orderProducer.ts
+        - sendTest
+    - created docker-compose.yml
+        - kafka
+        - zookeper
+    - docker compose up
+    - created console-kafka-consumer.sh
+    - test message produced 
+        - produced by waiter and consumed by console-consumer
+<br>
