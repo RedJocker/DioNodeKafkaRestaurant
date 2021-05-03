@@ -65,4 +65,16 @@
             - Cook read only food
             - Bartender read only drinks
 
+- produce topic delivery and balcony
+    - updated oderConsumer.ts to rreceive type as env
+    - created balconyProducer.ts
+    - created 2 new console consumers
+        - console-kafka-consumer-balcony.sh
+        - console-kafka-consumer-delivery.sh
+    - ran console consumers, order, balcony, delivery
+    - ran waiter, kitchen(Cook), kitchen(Bartender)
+    - tested POST
+        - when have table produces balcony topic
+        - when have addres produces delivery
+        - when have both produces balcony topic
 

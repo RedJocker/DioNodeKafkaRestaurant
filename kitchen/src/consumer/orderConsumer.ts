@@ -1,5 +1,6 @@
 import { KafkaConsumer } from 'node-rdkafka'
 import { sleep } from 'sleep';
+import { balconyProducer } from "../producer/balconyProducer"
 
 interface Order {
     id: string,
@@ -12,6 +13,7 @@ interface Order {
 class OrderConsumer extends KafkaConsumer {
     constructor(
       private readonly consumerType: 'Cooker' | 'Bartender',
+
     ) {
       super(process.env.KAFKA_PASSWORD
         ? {
@@ -50,6 +52,8 @@ class OrderConsumer extends KafkaConsumer {
       const timeToPrepare = Math.floor(Math.random() * 7 + 3);
       console.log('\x1b[46m%s\x1b[0m', `Preparing order '${id}' (will take ${timeToPrepare}s): ${JSON.stringify(rest)}`);
       sleep(timeToPrepare);
+      console.log('\x1b[44m%s\x1b[0m', `Finished order '${id}' preparing, sending to balcony...`);
+      balconyProducer.sendOrderToBalcony(order);
       
     }
   
@@ -67,7 +71,7 @@ if (process.env.CONSUMER_TYPE === 'Bartender') {
   CONSUMER_TYPE = 'Bartender';
 }
 
-const orderConsumer = new OrderConsumer('Bartender');
+const orderConsumer = new OrderConsumer(CONSUMER_TYPE);
 
 
 
