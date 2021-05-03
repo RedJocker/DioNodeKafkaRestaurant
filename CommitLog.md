@@ -36,3 +36,10 @@
     - test message produced 
         - produced by waiter and consumed by console-consumer
 <br>
+
+- create kafka topic through POST
+    - removed test logic
+    - made OrderProducer a singleton
+    - created orderProducer.sendOrder(order: Order)
+    - created Order interface
+    - changed waiterController POST

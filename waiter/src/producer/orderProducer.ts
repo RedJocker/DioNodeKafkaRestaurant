@@ -1,5 +1,11 @@
 import { Producer, ProducerGlobalConfig} from 'node-rdkafka';
 
+interface Order { 
+    id: string, 
+    table: number, 
+    food: string[], 
+    drinks: string[] 
+}
 
 class OrderProducer extends Producer {
     constructor() {
@@ -33,21 +39,26 @@ class OrderProducer extends Producer {
       super.disconnect();
     }
 
-    async sendTest() {
+    async sendOrder(order: Order) {
         if(super.isConnected()) {
             try {
-                super.produce(`${process.env.KAFKA_TOPIC_PREFIX || ''}order`, null, Buffer.from(JSON.stringify({test: "test"}))); 
-                console.log("message test produced");
+                super.produce(`${process.env.KAFKA_TOPIC_PREFIX || ''}order`, null, Buffer.from(JSON.stringify(order))); 
+                console.log('Order sent to the kitchen!');
             } catch (error) {
                 console.log(error.message)
             } 
         } else {
             console.log("producer is not connected, trying to send message again in 1 second")
-            setTimeout(() => this.sendTest(), 1000)
-        }  
+            setTimeout(() => this.sendOrder(order), 1000)
+        }   
     }
-  
-    
 }
 
-export { OrderProducer }
+const orderProducer = new OrderProducer();
+orderProducer.start()
+process.on('exit', () => {
+    orderProducer.close()
+})
+
+
+export { orderProducer, Order }
