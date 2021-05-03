@@ -86,4 +86,10 @@
         - updated orderProducer
         - created balconyConsumer
 
+- created deliverapp cloning waiter (deliveryApp)
+    - copied waiter
+    - updated where needed
+        - waiter -> delivery
+        - balcony -> deliveryBalcony
+
 

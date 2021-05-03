@@ -4,8 +4,8 @@ import { balconyProducer } from "../producer/balconyProducer"
 
 interface Order {
     id: string,
-    table: number,
-    address: string,
+    table?: number,
+    address?: string,
     food: string[],
     drinks: string[],
 }
@@ -75,4 +75,4 @@ const orderConsumer = new OrderConsumer(CONSUMER_TYPE);
 
 
 
-export {Order,orderConsumer}
+export { Order , orderConsumer }
