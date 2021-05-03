@@ -1,11 +1,7 @@
 import { Producer, ProducerGlobalConfig} from 'node-rdkafka';
+import { Order } from '../model/order';
 
-interface Order { 
-    id: string, 
-    table: number, 
-    food: string[], 
-    drinks: string[] 
-}
+
 
 class OrderProducer extends Producer {
     constructor() {
@@ -55,10 +51,5 @@ class OrderProducer extends Producer {
 }
 
 const orderProducer = new OrderProducer();
-orderProducer.start()
-process.on('exit', () => {
-    orderProducer.close()
-})
 
-
-export { orderProducer, Order }
+export { orderProducer}

@@ -1,5 +1,5 @@
 
-- created waiter project
+- created waiter project (waiter)
     - created folder waiter
     - npm init
         - enter on all
@@ -19,13 +19,13 @@
         - wrote express server entrypoint
 <br>
 
-- create one test endpoint
+- create one test endpoint (waiter)
     - added waiterController.ts
         - created a POST endpoint
             - just sending an 'OK' back to test
 <br>
 
-- create kafka topic
+- create kafka topic (waiter)
     - added orderProducer.ts
         - sendTest
     - created docker-compose.yml
@@ -37,7 +37,7 @@
         - produced by waiter and consumed by console-consumer
 <br>
 
-- create kafka topic through POST
+- create kafka topic through POST (waiter)
     - removed test logic
     - made OrderProducer a singleton
     - created orderProducer.sendOrder(order: Order)
@@ -49,7 +49,7 @@
         - don't accept order without food and drinks and does not create topic
 <br>
 
-- created kitchen project
+- created kitchen project (kitchen)
     - created folder kitchen
     - npm init
         - enter on all
@@ -58,15 +58,16 @@
     - created and ran addedPackages1.sh
 <br>
 
-- consume order topic
+- consume order topic (kitchen)
     - created oderConsumer.ts
         - tested with hardcoded type (Bartender and Cook)
         - reads new orders succesfully
             - Cook read only food
             - Bartender read only drinks
+<br>
 
-- produce topic delivery and balcony
-    - updated oderConsumer.ts to rreceive type as env
+- produce topic delivery and balcony (kitchen)
+    - updated oderConsumer.ts to receive type as env
     - created balconyProducer.ts
     - created 2 new console consumers
         - console-kafka-consumer-balcony.sh
@@ -77,4 +78,12 @@
         - when have table produces balcony topic
         - when have addres produces delivery
         - when have both produces balcony topic
+<br>
+
+- waiter consume from balcony (waiter)
+    - created a way to track the order state with orderState.ts
+        - updated waiterController 
+        - updated orderProducer
+        - created balconyConsumer
+
 
