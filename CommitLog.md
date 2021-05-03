@@ -47,6 +47,7 @@
         - accepts orders with both drinks and food and create topic 
         - accepts orders with only food or only drink and create topic
         - don't accept order without food and drinks and does not create topic
+<br>
 
 - created kitchen project
     - created folder kitchen
@@ -55,4 +56,13 @@
     - copied tsconfig.json
     - created and ran initialPackages.sh
     - created and ran addedPackages1.sh
+<br>
+
+- consume order topic
+    - created oderConsumer.ts
+        - tested with hardcoded type (Bartender and Cook)
+        - reads new orders succesfully
+            - Cook read only food
+            - Bartender read only drinks
+
 
