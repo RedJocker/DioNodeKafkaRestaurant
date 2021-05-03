@@ -43,3 +43,16 @@
     - created orderProducer.sendOrder(order: Order)
     - created Order interface
     - changed waiterController POST
+    - manual tests seem fine
+        - accepts orders with both drinks and food and create topic 
+        - accepts orders with only food or only drink and create topic
+        - don't accept order without food and drinks and does not create topic
+
+- created kitchen project
+    - created folder kitchen
+    - npm init
+        - enter on all
+    - copied tsconfig.json
+    - created and ran initialPackages.sh
+    - created and ran addedPackages1.sh
+
